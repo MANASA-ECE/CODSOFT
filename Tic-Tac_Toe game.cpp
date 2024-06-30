@@ -1,5 +1,6 @@
 #include <iostream>
-using namespace std;
+using namespace std; 
+
 void print(char x[3][3])
 {
     for(int i=0; i<3; i++)
@@ -73,12 +74,19 @@ int check(char at[3][3])
         }
         return 1;
     }
+    else if(count==9)
+    {
+        cout<<"Game is draw";
+        return 0;
+    }
     else
     {
         return 0;
     }
-}
-int main() {
+} 
+
+int main() 
+{
     char t[3][3];
     for(int i=0; i<3; i++)
     {
@@ -88,7 +96,7 @@ int main() {
         }
     }
     print(t);
-    int n=0, x, y;
+    int n=0, x, y, count=9;
     while(n==0)
     {
         cout<<"Enter the row of 'X': ";
@@ -97,6 +105,7 @@ int main() {
         cin>>y;
         t[x-1][y-1]='X';
         print(t);
+        count++;
         n=check(t);
         if(n==1)
         {
@@ -108,6 +117,7 @@ int main() {
         cin>>y;
         t[x-1][y-1]='0';
         print(t);
+        count++;
         n=check(t);
     }
     return 0;
